@@ -91,3 +91,26 @@ border: 2px dashed #bed2db;
 -moz-box-sizing: border-box;
 box-sizing: border-box;
 }
+
+/**********************
+ CUSTOM LINSHARE SCROLLBAR
+***********************/
+
+@media (min-width: @screen-md-min) {
+  ::-webkit-scrollbar-track {
+    border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #fbfafa;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: #fbfafa;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #a9a9a9;
+    border: 2px solid #a9a9a9;
+  }
+}

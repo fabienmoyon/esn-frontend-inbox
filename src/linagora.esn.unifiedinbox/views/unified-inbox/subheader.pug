@@ -4,19 +4,20 @@ block left
   .inbox-selection-aware-subheader(ng-switch="ctrl.isSelecting()")
     .inbox-selection-aware-subheader.inbox-not-selecting(ng-switch-when="false")
       inbox-subheader-burger-button.hidden-md
-      span.title.ellipsis {{ ctrl.resolvedContextName || 'Unified Inbox' | esnI18n:true }}
+      span.title.ellipsis.hidden-md {{ ctrl.resolvedContextName || 'Unified Inbox' | esnI18n:true }}
     .inbox-selection-aware-subheader.inbox-selecting(ng-switch-when="true")
       button.btn.btn-link.btn-icon(href='', ng-click="ctrl.unselectAllItems()", title="{{ 'Cancel' | translate }}")
         i.mdi.mdi-close
       span.title.extra-title.ellipsis {{ '%s selected' | translate:ctrl.selectedItems }}
 
 block right
-  .inbox-selection-aware-subheader(ng-switch="ctrl.isSelecting()")
-    .inbox-selection-aware-subheader.inbox-not-selecting(ng-switch-when="false")
-      inbox-list-sidebar-attachment-button(ng-if="ctrl.contextSupportsAttachments")
-    .inbox-selection-aware-subheader.inbox-selecting(ng-switch-when="true")
+  .inbox-selection-aware-subheader
+    .inbox-selection-aware-subheader.inbox-selecting(ng-if="ctrl.isSelecting() === true")
       inbox-subheader-not-spam-button(ng-click="ctrl.unSpam()", ng-show="ctrl.canUnSpamMessages()")
       inbox-subheader-delete-button(ng-click="ctrl.moveToTrash()", ng-show="ctrl.canTrashMessages()")
       inbox-subheader-mark-as-read-button(ng-click="ctrl.markAsRead()", ng-if="ctrl.isSomeUnreadItems()")
       inbox-subheader-mark-as-unread-button(ng-click="ctrl.markAsUnread()", ng-if="ctrl.isSomeReadItems()")
       inbox-subheader-more-button(action-list="/unifiedinbox/views/unified-inbox/action-list.html")
+    .inbox-selection-aware-subheader.inbox-not-selecting(ng-if="ctrl.isSelecting() === false")
+      inbox-list-sidebar-attachment-button(ng-if="ctrl.contextSupportsAttachments")
+      

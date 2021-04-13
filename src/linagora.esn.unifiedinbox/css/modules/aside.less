@@ -3,11 +3,13 @@
 @inboxAsideIconFontSize: 20px;
 @dividerColor: rgba(0, 0, 0, 0.08);
 @inboxAsideDragTargetBgColor: #FFCC80;
+@inboxAsidetBgColor: #f5f5f7;
 
 .inbox-aside {
   .menu-items(30px);
 
   color: @secondaryTextColor;
+  background-color: @inboxAsidetBgColor;
 
   hr {
     margin: 6px 0;
@@ -106,6 +108,7 @@
 
 @media(min-width: @screen-md-min) {
   .inbox-main-aside {
+    width: 256px;
     position: fixed;
     padding-right: 0;
     left: 0;
@@ -209,6 +212,11 @@
   .inbox-main-col {
     position: absolute;
     right: 0;
+    width: ~"calc(100vw - 256px)";
+  }
+
+  .inbox-list-preview-pane {
+    padding-right: 0;
   }
 }
 
